@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      xintegrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <title>Varad Wagh - Heaven for Programmers</title>
+    <style>
+      body {
+        top: 0;
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+        background-color: #f8f9fa; /* Light gray background */
+        color: #343a40; /* Dark text */
+        padding-top: 56px; /* Adjust for fixed navbar height */
+      }
+      /* Custom scrollbar for better aesthetics */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+      .section-title {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 8px;
+        margin-bottom: 2.5rem; /* Increased margin for better spacing */
+        font-weight: 700;
+        font-size: 2.5rem; /* Larger title */
+      }
+      .section-title::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 60%;
+        height: 4px; /* Thicker underline */
+        background-color: #007bff; /* Bootstrap primary blue */
+        border-radius: 9999px;
+      }
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.8rem;
+      }
+      .nav-link {
+        transition: color 0.3s ease, transform 0.3s ease;
+        font-weight: 500;
+      }
+      .nav-link:hover {
+        color: #007bff !important; /* Bootstrap primary blue */
+        transform: translateY(-2px);
+      }
+      /* Removed hero-section specific styles as this is a contact page */
+      .card {
+        border-radius: 0.75rem;
+        border: none;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+      }
+      .list-group-item {
+        border: none;
+        background-color: transparent;
+      }
+      .list-group-item i {
+        color: #007bff;
+        margin-right: 0.5rem;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        transition: background-color 0.3s ease, border-color 0.3s ease,
+          transform 0.3s ease;
+      }
+      .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+        transform: translateY(-2px);
+      }
+      .scroll-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px);
+        z-index: 1000;
+      }
+      .scroll-to-top.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Animations */
+      .animate__animated.in-view {
+        visibility: visible;
+      }
+      .animate__animated {
+        visibility: hidden; /* Hide elements initially to animate them in */
+      }
+
+      /* Footer specific styles */
+      .bg-black {
+        /* Custom class for black background, as Bootstrap 4 doesn't have it by default */
+        background-color: #000 !important;
+      }
+      footer .card {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.1
+        ); /* Slightly transparent white for cards in footer */
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: none; /* Remove shadow for footer cards */
+      }
+      footer .card-title,
+      footer .text-primary {
+        color: #82caff !important; /* Lighter blue for titles in dark footer */
+      }
+      footer .text-secondary,
+      footer .text-muted,
+      footer .list-group-item {
+        color: rgba(
+          255,
+          255,
+          255,
+          0.7
+        ) !important; /* Lighter text for dark footer */
+      }
+      footer .list-group-item i {
+        color: #82caff !important; /* Lighter blue for icons in dark footer */
+      }
+      footer .map-container {
+        position: relative;
+        padding-bottom: 75%; /* 4:3 Aspect Ratio (450 / 600 = 0.75) */
+        height: 0;
+        overflow: hidden;
+        border-radius: 0.75rem;
+      }
+      footer .map-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        border-radius: 0.75rem;
+      }
+    </style>
+  </head>
+
+  <body>
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="main-nav">
+        <div class="container">
+            <a class="navbar-brand" href="#">Varad Wagh</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a> 
+                      </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Skills.html">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Experience.html">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Projects.html">Projects</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./contact.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+   
+
+    <!-- Projects -->
+     <br>
+     <br>
+    <div class="container my-4">
+      <div
+        class="row featurette d-flex justify-content-center align-items-center"
+      >
+        <div class="col-md-7">
+          <h2 class="featurette-heading">
+            IT-Books Library Management System
+            <span class="text-muted">MERN Stack</span>
+          </h2>
+          <p class="lead">
+            Developed a full-stack library application to manage books and
+            borrowers. Implemented user authentication and role-based
+            permissions (admin/librarian/student), a responsive React UI with
+            Tailwind CSS, and RESTful APIs in Node.js/Express. Optimized MongoDB
+            queries for efficient data retrieval and improved user experience.
+          </p>
+           <div class="card-body">
+                    <h3 class="card-title h4 text-primary">IT-Books Library Management System</h3>
+                    <p class="card-subtitle mb-2 text-muted"><a href="https://github.com/varadwagh327/IT-Books">Click Here</a></p>
+                </div>
+        </div>
+        <div class="col-md-5">
+          <img
+            class="img-fluid"
+            src="../TODOs List_files/Images/IT-Books.png"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div
+        class="row featurette d-flex justify-content-center align-items-center"
+      >
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading">
+            Hospital Management System<span class="text-muted">MERN Stack</span>
+          </h2>
+          <p class="lead">
+            Built a comprehensive system with modules for patient registration,
+            appointment scheduling, doctor management, and reporting.
+            Implemented secure user login, RBAC for staff roles, and dynamic
+            React components for real-time data. Designed backend APIs in
+            Express.js and used MongoDB to handle patient and scheduling data
+            reliably.
+          </p>
+           <div class="card-body">
+                    <h3 class="card-title h4 text-primary">Hospital Management System</h3>
+                    <p class="card-subtitle mb-2 text-muted"><a href="https://github.com/varadwagh327/Doctor-Appointment">Click Here</a></p>
+                </div>
+        </div>
+        <div class="col-md-5 order-md-1">
+          <img
+            class="img-fluid"
+            src="../TODOs List_files/Images/Hospital.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div
+        class="row featurette d-flex justify-content-center align-items-center"
+      >
+        <div class="col-md-7">
+          <h2 class="featurette-heading">
+            TSP-Line (Trusted Simple Line)
+            <span class="text-muted">MERN Stack</span>
+          </h2>
+          <p class="lead">
+            Created an IT services platform offering domain registration,
+            hosting management, and web development services. Engineered a
+            RESTful backend with Node.js/Express and MongoDB, and a React
+            front-end for service listings. Integrated features for hosting
+            deployment and client-side testing tools. Ensured scalability and
+            maintainability by adhering to MERN best prac tices.
+          </p>
+           <div class="card-body">
+                    <h3 class="card-title h4 text-primary">TSP-Line (Trusted Simple Line)</h3>
+                    <p class="card-subtitle mb-2 text-muted"><a href="https://github.com/varadwagh327/TSp-Line-web">Click Here</a></p>
+                </div>
+        </div>
+        <div class="col-md-5">
+          <img
+            class="img-fluid"
+            src="../TODOs List_files/Images/TSP-Line.jpeg"
+            alt=""
+          />
+        </div>
+      </div>
+
+
+      <br>
+      <hr>
+      <br>
+
+      <div
+        class="row featurette d-flex justify-content-center align-items-center"
+      >
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading">
+            CNG-Simple-Line<span class="text-muted">MERN Stack</span>
+          </h2>
+          <p class="lead">
+            Built a scalable system with modules for patient registration,
+            appointment scheduling, and doctor management. Implemented RBAC to
+            restrict access for admins, doctors, and patients, improving data
+            security. Designed RESTful APIs using Express.js and MongoDB,
+            enabling seamless CRUD operations. Achieved a 95% Lighthouse
+            performance score by optimizing React components and MongoDB
+            queries.
+          </p>
+           <div class="card-body">
+                    <h3 class="card-title h4 text-primary">CNG-Simple-Line</h3>
+                    <p class="card-subtitle mb-2 text-muted"><a href="https://github.com/varadwagh327/CNG-Simple-Line">Click Here</a></p>
+                </div>
+        </div>
+        <div class="col-md-5 order-md-1">
+          <img
+            class="img-fluid"
+            src="../TODOs List_files/Images/CNG.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <br><br>
+    <!-- Footer -->
+
+    <footer class="bg-dark text-black py-4 text-center">
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-6 mb-4 mb-md-0 animate-fadeInUp delay-1">
+            <div class="card h-100 p-4">
+              <h3 class="h5 mb-3 text-primary">Get in Touch</h3>
+              <p class="text-secondary">
+                Feel free to reach out to me for collaborations, job
+                opportunities, or just to say hello!
+              </p>
+              <ul class="list-group list-group-flush mt-3">
+                <li class="list-group-item">
+                  <i class="fas fa-map-marker-alt mr-2"></i> Pune, Maharashtra,
+                  India
+                </li>
+                <li class="list-group-item">
+                  <i class="fas fa-phone mr-2"></i> +91 8421893853
+                </li>
+                <li class="list-group-item">
+                  <i class="fas fa-envelope mr-2"></i> varadwagh327@gmail.com
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 animate-fadeInUp delay-2">
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.261317997672!2d73.91434937494553!3d18.56225398254245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c12d4a6e3e57%3A0x7d2b0e7c8f7e7e6!2sPune%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sus!4v1717070381656!5m2!1sen!2sus"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                width="600"
+                height="317"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="text-white">
+          Copyright © 2025 Varad Wag. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
